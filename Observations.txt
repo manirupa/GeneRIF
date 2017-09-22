@@ -1,0 +1,70 @@
+Observations:
+============
+1 - For Across-Gene training the Between-Gene cosine similarity scores go up as vector sizes go up
+    The opposite is true for Within-Gene cosine similarity values, i.e. they go down as vector sizes go up
+    
+2 - For Within-Gene training the Within-Gene cosine similarity scores go "down" as vector sizes go up
+    The Between-Gene cosine similarity values also go "down" as vector sizes go up
+    
+2 - Across-Gene training captures more variation across genes for "between-gene" similarities
+
+3 - For finding similarities across genes, within-gene training may not be efficient or desired at all
+
+4 - We use the DBOW method for training, where a word/phrase is predicted by it's surrounding words
+
+5 - From the results we cannot be sure that smaller vector sizes and smaller context windows are good
+    settings to use for training as we initially believed
+    
+6 - We can be sure our process is correct as results yield geneRIF records with distance 1.0 for within-gene sims
+for across training and for between-gene sims for within-gene training.
+
+7 - Across-gene training may be better for between-gene similarities and within-gene training for
+    within-gene similarities
+
+
+Papers Read (and notes):
+========================
+1 - Improving disease gene prioritization using the semantic similarity of Gene Ontology terms 
+2 - FunSimMat update: new features for exploring functional similarity. Schlicker A, Albrecht M.
+     
+Notes: 
+- Diseases of major importance to public health such as cancer or diabetes are often polygenic and
+information about genes and gene products present as text 
+- MedSim -  method for ranking  candidate genes for disease of interest based on 4 different strategies
+for annotation using GO, AS-base, AS-ortho, AS-inter, AS-sem
+- FunSimMat - is a comprehensive database providing various precomputed functional similarity values for 
+proteins in UniProtKB and for protein families in Pfam and SMART. They have also significantly increased
+ the coverage of FunSimMat by adding data from the Gene Ontology Annotation project as well as new 
+ functional similarity measures
+
+3 - A Web-based Kernel Function for Measuring the Similarity of Short Text Snippets 
+
+Notes: 
+-A method for using query expansion via web search result terms to represent "short text snippets"
+and then use a cosine based Kernel function defined on these expanded query context vectors to correctly 
+identify or highly rank semantically similar pairs of short text snippets "that do not share common terms", 
+e.g. "Kofi Annan" with "UN Secy General", and Larry Page correctly as "Google founder" and "former CEO", 
+Steve Ballmer as "Microsoft CEO", Bill Gates closer to "MS founder" than "CEO".
+
+-Completely unsupervised 
+
+4 - Short Text Similarity with Word Embeddings
+Method to accurately predict semantically similar short text pairs, using a supervised learning approach
+with training pairs and using ontologies and semantic network to create contextual feature vectors for each pair
+
+Notes:
+
+
+
+Next Steps:
+==========
+- Obtain OMIM dataset
+- See if possible to leverage FunSimMat REST API to already gain access to precomputed gene, protein similarities
+w.r.t diseases
+- See how to apply Web Kernel based similarity instead of cosine similarity for SimGeneRIF and SimGene
+- Look at possible combination of supervised and unsupervised approaches and what semantic features from
+the (short text) papers can be used in our training, as well as correct vector sizes, context window to use.
+
+
+Ideas about next Steps/Feedback?:
+================================
